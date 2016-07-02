@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<score name="Star Wars - Luke theme" tempo="600">
+  <note value="G,4" duration="1" />
+  <note value="C,5" duration="2" />
+  <note value="D,5" duration="1.33" />
+  <note value="D#,5" duration="0.33" />
+  <note value="F,5" duration="0.33" />
+  <note value="D#,5" duration="2" />
+  <note value="C,5" duration="1.5" />
+  <note value="G,4" duration="0.5" />
+  <note value="C,5" duration="1.5" />
+  <note value="D,5" duration="0.5" />
+  <note value="D#,5" duration="0.5" />
+  <note value="G,4" duration="0.5" />
+  <note value="D#,5" duration="0.33" />
+  <note value="C,5" duration="0.33" />
+  <note value="G,5" duration="0.33" />
+  <note value="F,5" duration="2" />
+  <pause duration="1" />
+  <note value="G,4" duration="0.66" />
+  <note value="G,4" duration="0.33" />
+  <note value="C,5" duration="1.66" />
+  <note value="D,5" duration="0.33" />
+  <note value="D#,5" duration="0.75" />
+  <note value="C,5" duration="0.33" />
+  <note value="G,5" duration="0.75" />
+  <note value="D#,5" duration="0.33" />
+  <note value="C,6" duration="2" />
+  <note value="C,5" duration="1" />
+  <note value="D#,5" duration="0.33" />
+  <note value="D,5" duration="0.33" />
+  <note value="C,5" duration="0.33" />
+  <note value="G,5" duration="1.33" />
+  <note value="D#,5" duration="0.33" />
+  <note value="C,5" duration="0.33" />
+  <note value="G,4" duration="1" />
+  <note value="G,4" duration="1" />
+  <note value="C,5" duration="3" />
+</score>

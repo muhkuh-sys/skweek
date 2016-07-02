@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<score tempo="500" name="Zelda - Berceuse">
+  <note value="E,5" duration="2"/>
+  <note value="G,5" duration="1"/>
+  <note value="D,5" duration="2"/>
+  <note value="C,5" duration="0.50"/>
+  <note value="D,5" duration="0.50"/>
+  <note value="E,5" duration="2"/>
+  <note value="G,5" duration="1"/>
+  <note value="D,5" duration="2"/>
+  <pause duration="1"/>
+  <note value="E,5" duration="2"/>
+  <note value="G,5" duration="1"/>
+  <note value="D,6" duration="2"/>
+  <note value="C,6" duration="1"/>
+  <note value="G,5" duration="2"/>
+  <note value="F,5" duration="0.50"/>
+  <note value="E,5" duration="0.50"/>
+  <note value="D,5" duration="2"/>
+  <pause duration="1"/>
+  <note value="E,5" duration="2"/>
+  <note value="G,5" duration="1"/>
+  <note value="D,5" duration="2"/>
+  <note value="C,5" duration="0.50"/>
+  <note value="D,5" duration="0.50"/>
+  <note value="E,5" duration="2"/>
+  <note value="G,5" duration="1"/>
+  <note value="D,5" duration="2"/>
+  <pause duration="1"/>
+  <note value="E,5" duration="2"/>
+  <note value="G,5" duration="1"/>
+  <note value="D,6" duration="2"/>
+  <note value="C,6" duration="1"/>
+  <note value="G,6" duration="4"/>
+  <pause duration="2"/>
+  <note value="G,6" duration="2"/>
+  <note value="F,6" duration="0.50"/>
+  <note value="E,6" duration="0.50"/>
+  <note value="F,6" duration="0.50"/>
+  <note value="E,6" duration="0.50"/>
+  <note value="C,6" duration="2"/>
+  <note value="F,6" duration="2"/>
+  <note value="E,6" duration="0.50"/>
+  <note value="D,6" duration="0.50"/>
+  <note value="E,6" duration="0.50"/>
+  <note value="D,6" duration="0.50"/>
+  <note value="A,5" duration="2"/>
+  <pause duration="1"/>
+  <note value="G,6" duration="2"/>
+  <note value="F,6" duration="0.50"/>
+  <note value="E,6" duration="0.50"/>
+  <note value="F,6" duration="0.50"/>
+  <note value="E,6" duration="0.50"/>
+  <note value="C,6" duration="1"/>
+  <note value="G,6" duration="1"/>
+  <note value="D,7" duration="3"/>
+</score>

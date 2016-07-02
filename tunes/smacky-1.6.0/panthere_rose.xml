@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<score name="La panthere rose">
+  <block tempo="500">
+    <note value="G#,3" duration="0.50"/>
+    <note value="A,3" duration="1"/>
+    <pause duration="0.50"/>
+    <note value="B,3" duration="0.50"/>
+    <note value="C,4" duration="1"/>
+    <pause duration="0.50"/>
+  </block>
+  <block tempo="400">
+    <note value="G#,3" duration="0.50"/>
+    <note value="A,3" duration="1"/>
+    <note value="B,3" duration="0.50"/>
+    <note value="C,4" duration="1"/>
+    <note value="F,4" duration="0.50"/>
+    <note value="E,4" duration="1"/>
+    <note value="A,3" duration="0.50"/>
+    <note value="C,4" duration="1"/>
+    <note value="E,4" duration="0.50"/>
+    <note value="D#,4" duration="1.50"/>
+    <note value="D,4" duration="0.75"/>
+    <note value="C,4" duration="0.75"/>
+    <note value="A,3" duration="0.65"/>
+    <note value="G,3" duration="0.65"/>
+    <note value="A,3" duration="0.65"/>
+    <pause duration="0.01"/>
+    <note value="A,3" duration="1.25"/>
+    <pause duration="1.50"/>
+  </block>
+  <block tempo="500">
+    <note value="G#,3" duration="0.50"/>
+    <note value="A,3" duration="1"/>
+    <pause duration="0.50"/>
+    <note value="B,3" duration="0.50"/>
+    <note value="C,4" duration="1"/>
+    <pause duration="0.50"/>
+  </block>
+  <block tempo="400">
+    <note value="G#,3" duration="0.50"/>
+    <note value="A,3" duration="1"/>
+    <note value="B,3" duration="0.50"/>
+    <note value="C,4" duration="1"/>
+    <note value="F,4" duration="0.50"/>
+    <note value="E,4" duration="1"/>
+    <note value="C,4" duration="0.50"/>
+    <note value="E,4" duration="1"/>
+    <note value="A,4" duration="0.75"/>
+    <note value="G#,4" duration="2"/>
+    <pause duration="1.50"/>
+  </block>
+  <block tempo="500">
+    <note value="G#,3" duration="0.50"/>
+    <note value="A,3" duration="1"/>
+    <pause duration="0.50"/>
+    <note value="B,3" duration="0.50"/>
+    <note value="C,4" duration="1"/>
+    <pause duration="0.50"/>
+  </block>
+  <block tempo="400">
+    <note value="G#,3" duration="0.50"/>
+    <note value="A,3" duration="1"/>
+    <note value="B,3" duration="0.50"/>
+    <note value="C,4" duration="1"/>
+    <note value="F,4" duration="0.50"/>
+    <note value="E,4" duration="1"/>
+    <note value="A,3" duration="0.50"/>
+    <note value="C,4" duration="1"/>
+    <note value="E,4" duration="0.50"/>
+    <note value="D#,4" duration="2"/>
+    <note value="D,4" duration="0.75"/>
+    <note value="C,4" duration="0.75"/>
+    <note value="A,3" duration="0.75"/>
+    <note value="G,3" duration="0.75"/>
+    <note value="A,3" duration="0.75"/>
+    <pause duration="0.01"/>
+    <note value="A,3" duration="1.50"/>
+    <pause duration="3"/>
+  </block>
+  <block tempo="400">
+    <note value="A,4" duration="1"/>
+    <note value="G,4" duration="0.50"/>
+    <note value="E,4" duration="1"/>
+    <note value="D,4" duration="0.50"/>
+    <note value="C,4" duration="1"/>
+    <note value="A,3" duration="0.50"/>
+  </block>
+  <block tempo="600">
+    <note value="D#,4" duration="0.45"/>
+    <note value="D,4" duration="1"/>
+    <note value="D#,4" duration="0.45"/>
+    <note value="D,4" duration="1"/>
+    <note value="D#,4" duration="0.45"/>
+    <note value="D,4" duration="1"/>
+    <note value="D#,4" duration="0.45"/>
+    <note value="D,4" duration="1"/>
+  </block>
+  <block tempo="400">
+    <note value="C,4" duration="0.75"/>
+    <note value="A,3" duration="0.75"/>
+    <note value="G,3" duration="0.75"/>
+    <note value="A,3" duration="0.75"/>
+    <note value="A,3" duration="1.50"/>
+    <pause duration="1.5"/>
+  </block>
+  <block tempo="500">
+    <note value="G#,4" duration="0.50"/>
+    <note value="A,4" duration="1"/>
+    <pause duration="0.50"/>
+    <note value="B,4" duration="0.50"/>
+    <note value="C,5" duration="1"/>
+    <pause duration="0.50"/>
+  </block>
+  <block tempo="400">
+    <note value="G#,4" duration="0.50"/>
+    <note value="A,4" duration="1"/>
+    <note value="B,4" duration="0.50"/>
+    <note value="C,5" duration="1"/>
+    <note value="F,5" duration="0.50"/>
+    <note value="E,5" duration="1"/>
+    <note value="A,4" duration="0.50"/>
+    <note value="C,5" duration="1"/>
+    <note value="E,5" duration="0.50"/>
+    <note value="D#,5" duration="1.50"/>
+    <note value="D,5" duration="1.33"/>
+    <note value="C,5" duration="0.65"/>
+    <note value="A,4" duration="0.65"/>
+    <note value="G,4" duration="0.65"/>
+    <note value="A,4" duration="0.65"/>
+    <pause duration="0.01"/>
+    <note value="A,4" duration="1.25"/>
+    <pause duration="1.5"/>
+  </block>
+  <block tempo="500">
+    <note value="G#,4" duration="0.50"/>
+    <note value="A,4" duration="1"/>
+    <pause duration="0.50"/>
+    <note value="B,4" duration="0.50"/>
+    <note value="C,5" duration="1"/>
+    <pause duration="0.50"/>
+  </block>
+  <block tempo="400">
+    <note value="G#,4" duration="0.50"/>
+    <note value="A,4" duration="1"/>
+    <note value="B,4" duration="0.50"/>
+    <note value="C,5" duration="1"/>
+    <note value="F,5" duration="0.50"/>
+    <note value="E,5" duration="1"/>
+    <note value="C,5" duration="0.50"/>
+    <note value="E,5" duration="1"/>
+    <note value="A,5" duration="0.75"/>
+    <note value="G#,5" duration="2"/>
+    <pause duration="1.50"/>
+  </block>
+  <block tempo="500">
+    <note value="G#,4" duration="0.50"/>
+    <note value="A,4" duration="1"/>
+    <pause duration="0.50"/>
+    <note value="B,4" duration="0.50"/>
+    <note value="C,5" duration="1"/>
+    <pause duration="0.50"/>
+  </block>
+  <block tempo="400">
+    <note value="G#,4" duration="0.50"/>
+    <note value="A,4" duration="1"/>
+    <note value="B,4" duration="0.50"/>
+    <note value="C,5" duration="1"/>
+    <note value="F,5" duration="0.50"/>
+    <note value="E,5" duration="1"/>
+    <note value="A,4" duration="0.50"/>
+    <note value="C,5" duration="1"/>
+    <note value="E,5" duration="0.50"/>
+    <note value="D#,5" duration="2"/>
+    <note value="D,5" duration="0.75"/>
+    <note value="C,5" duration="0.75"/>
+    <note value="A,4" duration="0.75"/>
+    <note value="G,4" duration="0.75"/>
+    <note value="A,4" duration="0.75"/>
+    <pause duration="0.01"/>
+    <note value="A,4" duration="1.50"/>
+    <pause duration="3"/>
+  </block>
+  <block tempo="400">
+    <note value="A,5" duration="1"/>
+    <note value="G,5" duration="0.50"/>
+    <note value="E,5" duration="1"/>
+    <note value="D,5" duration="0.50"/>
+    <note value="C,5" duration="1"/>
+    <note value="A,4" duration="0.50"/>
+  </block>
+  <block tempo="600">
+    <note value="D#,5" duration="0.45"/>
+    <note value="D,5" duration="1"/>
+    <note value="D#,5" duration="0.45"/>
+    <note value="D,5" duration="1"/>
+    <note value="D#,5" duration="0.45"/>
+    <note value="D,5" duration="1"/>
+    <note value="D#,5" duration="0.45"/>
+    <note value="D,5" duration="1"/>
+  </block>
+  <block tempo="400">
+    <note value="C,5" duration="0.75"/>
+    <note value="A,4" duration="0.75"/>
+    <note value="G,4" duration="0.75"/>
+    <note value="A,4" duration="0.75"/>
+    <pause duration="0.01"/>
+    <note value="A,4" duration="1.50"/>
+    <pause duration="1.50"/>
+  </block>
+</score>

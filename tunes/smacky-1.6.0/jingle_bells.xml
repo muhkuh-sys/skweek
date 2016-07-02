@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<score tempo="225" name="Jingle bells">
+  <note value="E,6" duration="1" />
+  <note value="E,6" duration="1" />
+  <note value="E,6" duration="2" />
+  <note value="E,6" duration="1" />
+  <note value="E,6" duration="1" />
+  <note value="E,6" duration="2" />
+  <note value="E,6" duration="1" />
+  <note value="G,6" duration="1" />
+  <note value="C,6" duration="1.66" />
+  <note value="D,6" duration="0.33" />
+  <note value="E,6" duration="3" />
+  <pause duration="1" />
+  <note value="F,6" duration="1" />
+  <note value="F,6" duration="1" />
+  <note value="F,6" duration="1.66" />
+  <note value="F,6" duration="0.33" />
+  <note value="F,6" duration="1" />
+  <note value="E,6" duration="1" />
+  <note value="E,6" duration="1" />
+  <note value="E,6" duration="1" />
+  <note value="E,6" duration="1" />
+  <note value="D,6" duration="1" />
+  <note value="D,6" duration="1" />
+  <note value="E,6" duration="1" />
+  <note value="D,6" duration="2" />
+  <note value="G,6" duration="1" />
+  <pause duration="1" />
+  <note value="E,6" duration="1" />
+  <note value="E,6" duration="1" />
+  <note value="E,6" duration="2" />
+  <note value="E,6" duration="1" />
+  <note value="E,6" duration="1" />
+  <note value="E,6" duration="2" />
+  <note value="E,6" duration="1" />
+  <note value="G,6" duration="1" />
+  <note value="C,6" duration="1.66" />
+  <note value="D,6" duration="0.33" />
+  <note value="E,6" duration="3" />
+  <pause duration="1" />
+  <note value="F,6" duration="1" />
+  <note value="F,6" duration="1" />
+  <note value="F,6" duration="1.66" />
+  <note value="F,6" duration="0.33" />
+  <note value="F,6" duration="1" />
+  <note value="E,6" duration="1" />
+  <note value="E,6" duration="1" />
+  <note value="E,6" duration="1" />
+  <note value="G,6" duration="1" />
+  <note value="G,6" duration="1" />
+  <note value="F,6" duration="1" />
+  <note value="D,6" duration="1" />
+  <note value="C,6" duration="3" />
+  <pause duration="1" />
+  <note value="G,5" duration="1" />
+  <note value="E,6" duration="1" />
+  <note value="D,6" duration="1" />
+  <note value="C,6" duration="1" />
+  <note value="G,5" duration="3" />
+  <pause duration="1" />
+  <note value="G,5" duration="1" />
+  <note value="E,6" duration="1" />
+  <note value="D,6" duration="1" />
+  <note value="C,6" duration="1" />
+  <note value="A,5" duration="3" />
+  <pause duration="1" />
+  <note value="A,5" duration="1" />
+  <note value="F,6" duration="1" />
+  <note value="E,6" duration="1" />
+  <note value="D,6" duration="1" />
+  <note value="G,6" duration="2" />
+  <note value="G,6" duration="2" />
+  <note value="A,6" duration="1" />
+  <note value="A,6" duration="1" />
+  <note value="G,6" duration="1" />
+  <note value="F,6" duration="1" />
+  <note value="E,6" duration="3" />
+  <pause duration="1" />
+  <note value="G,5" duration="1" />
+  <note value="E,6" duration="1" />
+  <note value="D,6" duration="1" />
+  <note value="C,6" duration="1" />
+  <note value="G,5" duration="3" />
+  <pause duration="1" />
+  <note value="G,5" duration="1" />
+  <note value="E,6" duration="1" />
+  <note value="D,6" duration="1" />
+  <note value="C,6" duration="1" />
+  <note value="A,5" duration="3" />
+  <pause duration="1" />
+  <note value="A,5" duration="1" />
+  <note value="F,6" duration="1" />
+  <note value="E,6" duration="1" />
+  <note value="D,6" duration="1" />
+  <note value="G,6" duration="2" />
+  <note value="G,6" duration="2" />
+  <note value="A,6" duration="1" />
+  <note value="G,6" duration="1" />
+  <note value="F,6" duration="1" />
+  <note value="D,6" duration="1" />
+  <note value="C,6" duration="3" />
+</score>

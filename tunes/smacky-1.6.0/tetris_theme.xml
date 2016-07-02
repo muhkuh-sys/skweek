@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<score name="Tetris theme" tempo="200">
+  <!-- First part -->
+  <block loops="2">
+    <note value="E,6" />
+    <pause />
+    <note value="B,5" />
+    <note value="C,6" />
+    <note value="D,6" />
+    <pause />
+    <note value="C,6" />
+    <note value="B,5" />
+    <note value="A,5" />
+    <pause />
+    <note value="A,5" />
+    <note value="C,6" />
+    <note value="E,6" />
+    <pause />
+    <note value="D,6" />
+    <note value="C,6" />
+    <note value="B,5" />
+    <pause />
+    <note value="B,5" />
+    <note value="C,6" />
+    <note value="D,6" />
+    <pause />
+    <note value="E,6" />
+    <pause />
+    <note value="C,6" />
+    <pause />
+    <note value="A,5" />
+    <pause />
+    <note value="A,5" />
+    <pause duration="3" />
+
+    <note value="A,5" />
+    <pause />
+    <note value="D,6" />
+    <note value="F,6" />
+    <note value="A,6" />
+    <pause />
+    <note value="G,6" />
+    <note value="F,6" />
+    <note value="E,6" />
+    <pause />
+    <pause />
+    <note value="C,6" />
+    <note value="E,6" />
+    <pause />
+    <note value="D,6" />
+    <note value="C,6" />
+    <note value="B,5" />
+    <pause />
+    <note value="B,5" />
+    <note value="C,6" />
+    <note value="D,6" />
+    <pause />
+    <note value="E,6" />
+    <pause />
+    <note value="C,6" />
+    <pause />
+    <note value="A,5" />
+    <pause />
+    <note value="A,5" />
+    <pause duration="3" />
+  </block>
+
+  <!-- Second part -->
+  <note value="E,3" duration="4" />
+  <note value="C,3" duration="4" />
+
+  <note value="D,3" duration="4" />
+  <note value="B,2" duration="4" />
+
+  <note value="C,3" duration="4" />
+  <note value="A,2" duration="4" />
+
+  <note value="G#,2" duration="3" />
+  <note value="A,2" duration="1" />
+  <note value="B,2" duration="1" />
+
+  <pause duration="3" />
+
+  <note value="E,3" duration="4" />
+  <note value="C,3" duration="4" />
+
+  <note value="D,3" duration="4" />
+  <note value="B,2" duration="4" />
+
+  <note value="A,2" duration="2" />
+  <note value="B,2" duration="2" />
+  <note value="C,3" duration="2" />
+
+  <note value="A,4" duration="2" />
+  <note value="G#,4" duration="6" />
+
+  <pause duration="2" />
+
+  <!-- Third part -->
+  <block loops="2">
+    <note value="E,6" />
+    <pause />
+    <note value="B,5" />
+    <note value="C,6" />
+    <note value="D,6" />
+    <pause />
+    <note value="C,6" />
+    <note value="B,5" />
+    <note value="A,5" />
+    <pause />
+    <note value="A,5" />
+    <note value="C,6" />
+    <note value="E,6" />
+    <pause />
+    <note value="D,6" />
+    <note value="C,6" />
+    <note value="B,5" />
+    <pause />
+    <note value="B,5" />
+    <note value="C,6" />
+    <note value="D,6" />
+    <pause />
+    <note value="E,6" />
+    <pause />
+    <note value="C,6" />
+    <pause />
+    <note value="A,5" />
+    <pause />
+    <note value="A,5" />
+    <pause duration="3" />
+
+    <note value="A,5" />
+    <pause />
+    <note value="D,6" />
+    <note value="F,6" />
+    <note value="A,6" />
+    <pause />
+    <note value="G,6" />
+    <note value="F,6" />
+    <note value="E,6" />
+    <pause />
+    <pause />
+    <note value="C,6" />
+    <note value="E,6" />
+    <pause />
+    <note value="D,6" />
+    <note value="C,6" />
+    <note value="B,5" />
+    <pause />
+    <note value="B,5" />
+    <note value="C,6" />
+    <note value="D,6" />
+    <pause />
+    <note value="E,6" />
+    <pause />
+    <note value="C,6" />
+    <pause />
+    <note value="A,5" />
+    <pause />
+    <note value="A,5" />
+    <pause duration="3" />
+  </block>
+</score>

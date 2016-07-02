@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<score tempo="225" name="Les Cowboys Fringants - Les etoiles filantes">
+  <note value="E,5" duration="2" />
+  <pause duration="2" />
+  <note value="D,5" duration="2" />
+  <pause duration="2" />
+  <note value="E,5" duration="2" />
+  <pause duration="2" />
+  <note value="A,4" duration="2" />
+  <pause duration="2" />
+  <note value="E,5" duration="2" />
+  <pause duration="2" />
+  <note value="D,5" duration="2" />
+  <pause duration="2" />
+  <note value="E,5" duration="2" />
+  <pause duration="2" />
+  <note value="A,4" duration="2" />
+  <pause duration="2" />
+  <note value="D,5" duration="2" />
+  <pause duration="2" />
+  <note value="C,5" duration="2" />
+  <pause duration="2" />
+  <note value="D,5" duration="2" />
+  <pause duration="2" />
+  <note value="G,4" duration="2" />
+  <pause duration="2" />
+  <note value="D,5" duration="2" />
+  <pause duration="2" />
+  <note value="C,5" duration="2" />
+  <pause duration="2" />
+  <note value="D,5" duration="2" />
+  <pause duration="2" />
+  <note value="G,4" duration="2" />
+  <pause duration="2" />
+  <note value="A,4" duration="2" />
+  <note value="A,4" duration="1.66" />
+  <note value="B,4" duration="0.50" />
+  <note value="C,5" duration="1" />
+  <note value="D,5" duration="1" />
+  <note value="E,5" duration="1" />
+  <note value="D,5" duration="1" />
+  <note value="B,4" duration="2" />
+  <note value="B,4" duration="1.66" />
+  <note value="B,4" duration="0.50" />
+  <note value="B,4" duration="1" />
+  <note value="C,5" duration="1" />
+  <note value="B,4" duration="1" />
+  <note value="A,4" duration="1" />
+  <note value="G,4" duration="2" />
+  <note value="G,4" duration="1.66" />
+  <note value="G,4" duration="0.50" />
+  <note value="G,4" duration="1" />
+  <note value="A,4" duration="1" />
+  <note value="B,4" duration="1" />
+  <note value="A,4" duration="1" />
+  <note value="A,4" duration="4" />
+  <note value="G,5" duration="1.33" />
+  <note value="F,5" duration="1.33" />
+  <note value="E,5" duration="1" />
+  <note value="A,4" duration="2" />
+  <note value="A,4" duration="1.66" />
+  <note value="B,4" duration="0.50" />
+  <note value="C,5" duration="1" />
+  <note value="D,5" duration="1" />
+  <note value="E,5" duration="1" />
+  <note value="D,5" duration="1" />
+  <note value="B,4" duration="2" />
+  <note value="B,4" duration="1.66" />
+  <note value="B,4" duration="0.50" />
+  <note value="B,4" duration="1" />
+  <note value="C,5" duration="1" />
+  <note value="B,4" duration="1" />
+  <note value="A,4" duration="1" />
+  <note value="G,4" duration="2" />
+  <note value="G,4" duration="1.66" />
+  <note value="G,4" duration="0.50" />
+  <note value="G,4" duration="1" />
+  <note value="A,4" duration="1" />
+  <note value="B,4" duration="1" />
+  <note value="A,4" duration="1" />
+  <note value="A,4" duration="4" />
+</score>

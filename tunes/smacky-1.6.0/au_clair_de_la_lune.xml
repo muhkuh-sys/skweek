@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<score tempo="300" name="Au clair de la lune">
+  <note value="G,4" duration="1" />
+  <note value="G,4" duration="1" />
+  <note value="G,4" duration="1" />
+  <note value="A,4" duration="1" />
+  <note value="B,4" duration="2" />
+  <note value="A,4" duration="2" />
+  <note value="G,4" duration="1" />
+  <note value="B,4" duration="1" />
+  <note value="A,4" duration="1" />
+  <note value="A,4" duration="1" />
+  <note value="G,4" duration="2" />
+  <pause duration="2" />
+  <note value="G,4" duration="1" />
+  <note value="G,4" duration="1" />
+  <note value="G,4" duration="1" />
+  <note value="A,4" duration="1" />
+  <note value="B,4" duration="2" />
+  <note value="A,4" duration="2" />
+  <note value="G,4" duration="1" />
+  <note value="B,4" duration="1" />
+  <note value="A,4" duration="1" />
+  <note value="A,4" duration="1" />
+  <note value="G,4" duration="2" />
+  <pause duration="2" />
+  <note value="A,4" duration="1" />
+  <note value="A,4" duration="1" />
+  <note value="A,4" duration="1" />
+  <note value="A,4" duration="1" />
+  <note value="E,4" duration="2" />
+  <note value="E,4" duration="2" />
+  <note value="A,4" duration="1" />
+  <note value="G,4" duration="1" />
+  <note value="F#,4" duration="1" />
+  <note value="E,4" duration="1" />
+  <note value="D,4" duration="2" />
+  <pause duration="2" />
+  <note value="G,4" duration="1" />
+  <note value="G,4" duration="1" />
+  <note value="G,4" duration="1" />
+  <note value="A,4" duration="1" />
+  <note value="B,4" duration="2" />
+  <note value="A,4" duration="2" />
+  <note value="G,4" duration="1" />
+  <note value="B,4" duration="1" />
+  <note value="A,4" duration="1" />
+  <note value="A,4" duration="1" />
+  <note value="G,4" duration="4" />
+</score>

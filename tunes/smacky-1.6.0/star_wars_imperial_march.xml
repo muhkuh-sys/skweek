@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<score tempo="600" name="Star Wars - Imperial march">
+  <note value="C,5" duration="1" />
+  <note value="C,5" duration="1" />
+  <note value="C,5" duration="1" />
+  <note value="G#,4" duration="0.66" />
+  <note value="D#,5" duration="0.33" />
+  <note value="C,5" duration="1" />
+  <note value="G#,4" duration="0.66" />
+  <note value="D#,5" duration="0.33" />
+  <note value="C,5" duration="2" />
+  <note value="G,5" duration="1" />
+  <note value="G,5" duration="1" />
+  <note value="G,5" duration="1" />
+  <note value="G#,5" duration="0.66" />
+  <note value="D#,5" duration="0.33" />
+  <note value="B,4" duration="1" />
+  <note value="G#,4" duration="0.66" />
+  <note value="D#,5" duration="0.33" />
+  <note value="C,5" duration="2" />
+  <note value="C,6" duration="1" />
+  <note value="C,5" duration="0.66" />
+  <note value="C,5" duration="0.33" />
+  <note value="C,6" duration="1" />
+  <note value="B,5" duration="0.66" />
+  <note value="A#,5" duration="0.25" />
+  <note value="A,5" duration="0.25" />
+  <note value="G#,5" duration="0.25" />
+  <note value="A,5" duration="0.25" />
+  <pause duration="0.50" />
+  <note value="C,5" duration="0.50" />
+  <note value="F,5" duration="1" />
+  <note value="E,5" duration="0.66" />
+  <note value="D#,5" duration="0.25" />
+  <note value="D,5" duration="0.25" />
+  <note value="C#,5" duration="0.25" />
+  <note value="D,5" duration="0.25" />
+  <pause duration="0.50" />
+  <note value="G#,4" duration="0.50" />
+  <note value="B,4" duration="1" />
+  <note value="G,4" duration="0.66" />
+  <note value="C,5" duration="0.33" />
+  <note value="D#,5" duration="1" />
+  <note value="C,5" duration="0.66" />
+  <note value="D#,5" duration="0.33" />
+  <note value="G,5" duration="2" />
+  <note value="C,6" duration="1" />
+  <note value="C,5" duration="0.66" />
+  <note value="C,5" duration="0.33" />
+  <note value="C,6" duration="1" />
+  <note value="B,5" duration="0.66" />
+  <note value="A#,5" duration="0.25" />
+  <note value="A,5" duration="0.25" />
+  <note value="G#,5" duration="0.25" />
+  <note value="A,5" duration="0.25" />
+  <pause duration="0.50" />
+  <note value="C,5" duration="0.50" />
+  <note value="F,5" duration="1" />
+  <note value="E,5" duration="0.66" />
+  <note value="D#,5" duration="0.25" />
+  <note value="D,5" duration="0.25" />
+  <note value="C#,5" duration="0.25" />
+  <note value="D,5" duration="0.25" />
+  <pause duration="0.50" />
+  <note value="G,4" duration="0.50" />
+  <note value="B,4" duration="1" />
+  <note value="G#,4" duration="0.66" />
+  <note value="D#,5" duration="0.33" />
+  <note value="C,5" duration="1" />
+  <note value="G#,4" duration="0.66" />
+  <note value="D#,5" duration="0.33" />
+  <note value="C,5" duration="2" />
+</score>

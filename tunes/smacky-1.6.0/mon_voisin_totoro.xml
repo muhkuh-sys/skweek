@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<score tempo="450" name="Mon voisin Totoro">
+  <note value="G,5" duration="0.50" />
+  <pause duration="0.50" />
+  <note value="E,5" duration="0.50" />
+  <note value="C,5" duration="0.50" />
+  <pause duration="0.50" />
+  <note value="G,5" duration="0.50" />
+  <pause duration="0.50" />
+  <note value="F,5" duration="1" />
+  <note value="D,5" duration="3" />
+  <pause duration="2.50" />
+  <note value="C,5" duration="1" />
+  <note value="B,4" duration="1" />
+  <note value="C,5" duration="0.50" />
+  <note value="G,4" duration="3" />
+  <pause duration="2.50" />
+  <note value="C,5" duration="1" />
+  <note value="B,4" duration="1" />
+  <note value="C,5" duration="0.50" />
+  <note value="E,5" duration="3" />
+  <pause duration="1.50" />
+  <note value="F,5" duration="1" />
+  <note value="E,5" duration="1" />
+  <note value="D,5" duration="1" />
+  <note value="C,5" duration="0.50" />
+  <note value="F,5" duration="1.50" />
+  <note value="E,5" duration="1" />
+  <note value="D,5" duration="1" />
+  <note value="C,5" duration="1" />
+  <note value="C,5" duration="1.50" />
+  <note value="D,5" duration="0.50" />
+  <note value="D,5" duration="3" />
+  <pause duration="4" />
+  <note value="C,5" duration="1" />
+  <note value="B,4" duration="1" />
+  <note value="C,5" duration="0.50" />
+  <note value="G,4" duration="3" />
+  <pause duration="2.50" />
+  <note value="C,5" duration="1" />
+  <note value="B,4" duration="1" />
+  <note value="C,5" duration="0.50" />
+  <note value="G,5" duration="3" />
+  <pause duration="1.50" />
+  <note value="F,5" duration="0.50" />
+  <note value="F,5" duration="0.50" />
+  <note value="F,5" duration="0.50" />
+  <note value="F,5" duration="0.50" />
+  <note value="F,5" duration="0.50" />
+  <note value="E,5" duration="0.50" />
+  <note value="D,5" duration="0.50" />
+  <note value="F,5" duration="2.50" />
+  <pause duration="0.50" />
+  <note value="D,5" duration="0.50" />
+  <note value="E,5" duration="0.50" />
+  <note value="F,5" duration="0.50" />
+  <note value="E,5" duration="0.50" />
+  <note value="E,5" duration="0.50" />
+  <note value="E,5" duration="0.50" />
+  <note value="E,5" duration="0.50" />
+  <note value="E,5" duration="0.50" />
+  <note value="D,5" duration="0.50" />
+  <note value="C,5" duration="0.50" />
+  <note value="E,5" duration="3.50" />
+  <pause duration="0.50" />
+  <note value="D,5" duration="1" />
+  <note value="E,5" duration="1" />
+  <note value="F,5" duration="1" />
+  <note value="G,5" duration="0.50" />
+  <note value="D,5" duration="1.50" />
+  <note value="E,5" duration="1" />
+  <note value="G,5" duration="0.50" />
+  <note value="A,5" duration="0.50" />
+  <note value="G,5" duration="0.50" />
+  <note value="D,6" duration="5" />
+  <pause duration="2" />
+  <note value="C,5" duration="0.25" />
+  <note value="D,5" duration="0.25" />
+  <note value="E,5" duration="0.25" />
+  <note value="F,5" duration="0.25" />
+  <note value="G,5" duration="0.50" />
+  <pause duration="0.50" />
+  <note value="E,5" duration="0.50" />
+  <note value="C,5" duration="0.50" />
+  <pause duration="0.50" />
+  <note value="G,5" duration="0.50" />
+  <pause duration="0.50" />
+  <note value="F,5" duration="1" />
+  <note value="D,5" duration="0.50" />
+  <pause duration="3" />
+  <note value="F,5" duration="0.50" />
+  <pause duration="0.50" />
+  <note value="D,5" duration="0.50" />
+  <note value="B,4" duration="0.50" />
+  <pause duration="0.50" />
+  <note value="F,5" duration="0.50" />
+  <pause duration="0.50" />
+  <note value="E,5" duration="1" />
+  <note value="C,5" duration="0.50" />
+  <pause duration="3" />
+  <note value="A,4" duration="1" />
+  <note value="A,5" duration="1" />
+  <note value="G,5" duration="0.50" />
+  <note value="F,5" duration="0.50" />
+  <note value="E,5" duration="0.50" />
+  <note value="F,5" duration="0.50" />
+  <note value="G,5" duration="1.50" />
+  <note value="E,5" duration="0.50" />
+  <note value="C,5" duration="1.50" />
+  <note value="E,5" duration="0.50" />
+  <note value="F,5" duration="0.50" />
+  <note value="E,5" duration="0.50" />
+  <note value="F,5" duration="0.50" />
+  <note value="E,5" duration="0.50" />
+  <note value="F,5" duration="0.50" />
+  <note value="E,5" duration="0.50" />
+  <note value="C,5" duration="0.50" />
+  <note value="D,5" duration="3" />
+  <pause duration="0.50" />
+  <note value="C,5" duration="0.25" />
+  <note value="D,5" duration="0.25" />
+  <note value="E,5" duration="0.25" />
+  <note value="F,5" duration="0.25" />
+  <note value="G,5" duration="0.50" />
+  <pause duration="0.50" />
+  <note value="E,5" duration="0.50" />
+  <note value="C,5" duration="0.50" />
+  <pause duration="0.50" />
+  <note value="G,5" duration="0.50" />
+  <pause duration="0.50" />
+  <note value="F,5" duration="1" />
+  <note value="D,5" duration="0.50" />
+  <pause duration="3" />
+  <note value="F,5" duration="0.50" />
+  <pause duration="0.50" />
+  <note value="D,5" duration="0.50" />
+  <note value="B,4" duration="0.50" />
+  <pause duration="0.50" />
+  <note value="F,5" duration="0.50" />
+  <pause duration="0.50" />
+  <note value="E,5" duration="1" />
+  <note value="C,5" duration="0.50" />
+  <pause duration="3" />
+  <note value="A,4" duration="1" />
+  <note value="C,5" duration="1" />
+  <note value="F,5" duration="1" />
+  <note value="E,5" duration="0.25" />
+  <pause duration="0.25" />
+  <note value="F,5" duration="0.50" />
+  <note value="G,5" duration="0.25" />
+  <pause duration="0.25" />
+  <note value="C,5" duration="2" />
+  <pause duration="1" />
+  <note value="G,4" duration="0.50" />
+  <note value="G,4" duration="0.50" />
+  <note value="F,5" duration="0.50" />
+  <note value="E,5" duration="0.50" />
+  <note value="D,5" duration="0.50" />
+  <note value="E,5" duration="0.25" />
+  <pause duration="0.25" />
+  <note value="C,5" duration="3" />
+</score>

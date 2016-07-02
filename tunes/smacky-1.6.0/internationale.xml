@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<score name="L'internationale" tempo="500">
+  <note value="A,4" duration="0.66" />
+  <note value="G,4" duration="0.33" />
+  <note value="F,4" duration="2" />
+  <note value="C,4" duration="1.66" />
+  <note value="A,3" duration="0.33" />
+  <note value="D,4" duration="2" />
+  <note value="A#,3" duration="1" />
+  <note value="G,4" duration="0.75" />
+  <note value="F,4" duration="0.25" />
+  <note value="E,4" duration="2" />
+  <note value="D,4" duration="1" />
+  <note value="C,4" duration="1" />
+  <note value="C,4" duration="2" />
+</score>
