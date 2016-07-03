@@ -1,17 +1,7 @@
 import argparse
+import array
 import sys
 import xml.etree.ElementTree
-
-
-import wave
-import math
-import struct
-
-def writeNote(tWave, fFrequencyHz, uiDurationInSeconds):
-	for i in range(int(uiDurationInSeconds * 44100)):
-		value = int(32767.0*math.cos(fFrequencyHz*math.pi*float(i)/float(44100)))
-		data = struct.pack('<h', value)
-		tWave.writeframesraw( data )
 
 
 
@@ -191,7 +181,7 @@ class Convert:
 		self.__tXml = xml.etree.ElementTree.parse(tSmackyFile)
 		self.__tXmlRoot = self.__tXml.getroot()
 
-		# The root tag of a smacky file must be ''.
+		# The root tag of a smacky file must be 'score'.
 		if self.__tXmlRoot.tag!='score':
 			raise Exception('The input file has no "score" root but "%s". Is this really a Smacky file?' % self.__tXmlRoot.tag)
 
@@ -199,37 +189,49 @@ class Convert:
 		if 'name' in self.__tXmlRoot.attrib:
 			self.__strTuneName = self.__tXmlRoot.attrib['name']
 
+		# Collect all notes in this array.
 		print('Processing tune "%s"...' % self.__strTuneName)
 
-		self.tWavFile = wave.open('test.wav', 'w')
-		self.tWavFile.setnchannels(1) # mono
-		self.tWavFile.setsampwidth(2)
-		self.tWavFile.setframerate(44100)
-
 		# Treat the root tag as a block from here on.
-		self.__parseBlock(self.__tXmlRoot, uiDefaultSpeed)
+		tData = self.__parseBlock(self.__tXmlRoot, uiDefaultSpeed)
 
-		self.tWavFile.close()
+		# Write all data to the output file.
+		tData.tofile(tSkweekFile)
+
+
+
+	def __write_uint32(self, aucArray, tValue):
+		# Convert the input to a long.
+		ulValue = long(tValue)
+		uc0 = ulValue&0xff
+		uc1 = (ulValue>>8)&0xff
+		uc2 = (ulValue>>16)&0xff
+		uc3 = (ulValue>>24)&0xff
+		aucArray.extend([uc0, uc1, uc2, uc3])
 
 
 
 	def __parseBlock(self, tBlockTag, uiDefaultSpeed):
-		# The default repeat count is '1'.
-		uiRepeat = 1
-
 		# Get the tempo for the block.
 		uiSpeed = uiDefaultSpeed
 		if 'tempo' in tBlockTag.attrib:
 			uiSpeed = long(tBlockTag.attrib['tempo'])
 
 		# Get the repeat counter.
+		# The default repeat count is '1'.
+		uiRepeat = 1
 		if 'loops' in tBlockTag.attrib:
 			uiRepeat = long(tBlockTag.attrib['loops'])
 
 		print('Starting new block with tempo %d and loops %d.' % (uiSpeed, uiRepeat))
 
 		# Collect the block data in an array.
-		# ...
+		tData = array.array('B')
+
+		# Start a repeat loop if the block has a loop value larger than 1.
+		if uiRepeat!=1:
+			tData.append(ord('B'))
+			self.__write_uint32(tData, uiRepeat)
 
 		# Loop over all elements in the block.
 		for tNode in list(tBlockTag):
@@ -269,11 +271,11 @@ class Convert:
 				# Round the ticks.
 				ulDurationTicks = round(fDurationTicks)
 
-				print('Note %s (%fHz -> %f ticks) with duration %fms (->%f ticks)' % (strNoteCompact, fNoteFrequency, fNoteTicks, fDurationMs, fDurationTicks))
+				print('Note %s (%fHz -> %d ticks) with duration %fms (->%d ticks)' % (strNoteCompact, fNoteFrequency, ulNoteTicks, fDurationMs, ulDurationTicks))
 
-				writeNote(self.tWavFile, fNoteFrequency, fDurationMs/1000)
-
-
+				tData.append(ord('N'))
+				self.__write_uint32(tData, ulNoteTicks)
+				self.__write_uint32(tData, ulDurationTicks)
 
 			elif strTag=='pause':
 				# The 'duration' attribute is optional. The default duration is 1.
@@ -286,12 +288,26 @@ class Convert:
 
 				# Convert the duration in timer ticks.
 				fDurationTicks = fDurationMs * self.__fTimerFrequencyInHz / 1000.0
+				# Round the ticks.
+				ulDurationTicks = round(fDurationTicks)
 
 				print('Pause with duration %f (->%f ticks)' % (fDurationMs, fDurationTicks))
 
-				writeNote(self.tWavFile, 0, fDurationMs/1000)
+				tData.append(ord('P'))
+				self.__write_uint32(tData, ulDurationTicks)
+
+			elif strTag=='block':
+				# Start a new block with the current tempo as default.
+				tData.extend(self.__parseBlock(tNode, uiSpeed))
+
 			else:
 				raise Exception('Unknown tag "%s"!' % strTag)
+
+		# End the repeat loop if the block has a loop value larger than 1.
+		if uiRepeat!=1:
+			tData.append(ord('E'))
+
+		return tData
 
 
 def main():
