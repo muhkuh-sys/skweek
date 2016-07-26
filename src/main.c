@@ -262,9 +262,11 @@ static int play_skweek(const unsigned char *pucStart, const unsigned char *pucEn
 	return iResult;
 }
 
+#define XSTR(a) #a
+#define STR(a) XSTR(a)
 
-extern const unsigned char _binary_simpsons_theme_bin_start[];
-extern const unsigned char _binary_simpsons_theme_bin_end[];
+extern const unsigned char CONCAT(_binary, TUNE_NAME, bin_start)[];
+extern const unsigned char CONCAT(_binary, TUNE_NAME, bin_end)[];
 
 
 
@@ -274,6 +276,8 @@ void skweek_main(TEST_PARAMETER_T *ptTestParam)
 
 	uprintf("\f. *** Skweek by doc_bacardi@users.sourceforge.net ***\n");
 	uprintf("V" VERSION_ALL "\n\n");
+
+	uprintf("Playing " STR(TUNE_NAME) "...\n");
 
 	/* Switch all LEDs off. */
 	rdy_run_setLEDs(RDYRUN_OFF);

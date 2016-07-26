@@ -141,6 +141,7 @@ sources = """
 env_netx4000 = env_netx4000_default.Clone()
 skw_netx4000 = convert_skweek_to_obj(env_netx4000, 'netx4000')
 env_netx4000.Replace(LDFILE = 'src/netx4000/netx4000_cr7.ld')
+env_netx4000.Append(CPPDEFINES = [['TUNE_NAME', 'simpsons_theme']])
 src_netx4000 = env_netx4000.SetBuildPath('targets/netx4000_intram', 'src', sources)
 elf_netx4000 = env_netx4000.Elf('targets/netx4000/netx4000_skweek.elf', src_netx4000 + platform_lib_netx4000 + skw_netx4000['simpsons_theme'])
 txt_netx4000 = env_netx4000.ObjDump('targets/netx4000/netx4000_skweek.txt', elf_netx4000, OBJDUMP_FLAGS=['--disassemble', '--source', '--all-headers', '--wide'])
