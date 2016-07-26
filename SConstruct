@@ -130,6 +130,7 @@ sources = """
 	src/header.c
 	src/init_netx_test.S
 	src/main.c
+	src/skweek.c
 """
 
 #----------------------------------------------------------------------------
