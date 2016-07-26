@@ -11,6 +11,8 @@ class Convert:
 	__strTuneName = None
 	__fTimerFrequencyInHz = None
 
+	__fVerbose = None
+
 	# This dictionary converts a note to a frequency in Hz.
 	__aNote2Frequency = {
 		'C0':        16.35,
@@ -168,7 +170,9 @@ class Convert:
 		'B8':      7902.13
 	}
 
-	def __init__(self, tSmackyFile, tSkweekFile):
+	def __init__(self, tSmackyFile, tSkweekFile, fVerbose):
+		self.__fVerbose = fVerbose
+
 		# Set the default speed.
 		uiDefaultSpeed = 250
 		# Set the default tune name.
@@ -190,7 +194,8 @@ class Convert:
 			self.__strTuneName = self.__tXmlRoot.attrib['name']
 
 		# Collect all notes in this array.
-		print('Processing tune "%s"...' % self.__strTuneName)
+		if self.__fVerbose==True:
+			print('Processing tune "%s"...' % self.__strTuneName)
 
 		# Treat the root tag as a block from here on.
 		tData = self.__parseBlock(self.__tXmlRoot, uiDefaultSpeed)
@@ -223,7 +228,8 @@ class Convert:
 		if 'loops' in tBlockTag.attrib:
 			uiRepeat = long(tBlockTag.attrib['loops'])
 
-		print('Starting new block with tempo %d and loops %d.' % (uiSpeed, uiRepeat))
+		if self.__fVerbose==True:
+			print('Starting new block with tempo %d and loops %d.' % (uiSpeed, uiRepeat))
 
 		# Collect the block data in an array.
 		tData = array.array('B')
@@ -271,7 +277,8 @@ class Convert:
 				# Round the ticks.
 				ulDurationTicks = round(fDurationTicks)
 
-				print('Note %s (%fHz -> %d ticks) with duration %fms (->%d ticks)' % (strNoteCompact, fNoteFrequency, ulNoteTicks, fDurationMs, ulDurationTicks))
+				if self.__fVerbose==True:
+					print('Note %s (%fHz -> %d ticks) with duration %fms (->%d ticks)' % (strNoteCompact, fNoteFrequency, ulNoteTicks, fDurationMs, ulDurationTicks))
 
 				tData.append(ord('N'))
 				self.__write_uint32(tData, ulNoteTicks)
@@ -291,7 +298,8 @@ class Convert:
 				# Round the ticks.
 				ulDurationTicks = round(fDurationTicks)
 
-				print('Pause with duration %f (->%f ticks)' % (fDurationMs, fDurationTicks))
+				if self.__fVerbose==True:
+					print('Pause with duration %f (->%f ticks)' % (fDurationMs, fDurationTicks))
 
 				tData.append(ord('P'))
 				self.__write_uint32(tData, ulDurationTicks)
@@ -318,7 +326,7 @@ def main():
 	                     help='write the output data to OUTPUT_FILENAME', metavar='OUTPUT_FILENAME')
 	aOptions = tParser.parse_args()
 
-	tConvert = Convert(aOptions.infile, aOptions.outfile)
+	tConvert = Convert(aOptions.infile, aOptions.outfile, True)
 	if aOptions.infile != sys.stdin:
 	        aOptions.infile.close()
 	if aOptions.outfile != sys.stdout:
