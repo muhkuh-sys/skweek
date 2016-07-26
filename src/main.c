@@ -170,7 +170,7 @@ static int play_skweek(const unsigned char *pucStart, const unsigned char *pucEn
 
 				uprintf("Play note %08x %08x\n", ulNoteTicks, ulDurationTicks);
 
-//				note(ulNoteTicks, ulDurationTicks);
+				note(ulNoteTicks, ulDurationTicks);
 			}
 		}
 		else if( ucCmd=='P' )
@@ -278,7 +278,7 @@ void skweek_main(TEST_PARAMETER_T *ptTestParam)
 	/* Switch all LEDs off. */
 	rdy_run_setLEDs(RDYRUN_OFF);
 
-//	init_mmios();
+	init_mmios();
 
 	/* Play the tune. */
 	play_skweek(_binary_simpsons_theme_bin_start, _binary_simpsons_theme_bin_end);
