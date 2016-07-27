@@ -1,14 +1,10 @@
 
 #include <string.h>
 
-#include "main_test.h"
 #include "netx_io_areas.h"
 #include "rdy_run.h"
 #include "skweek.h"
 #include "systime.h"
-
-#include "uprintf.h"
-#include "version.h"
 
 /*-------------------------------------------------------------------------*/
 
@@ -32,29 +28,38 @@ static void init_mmios(void)
 #define XSTR(a) #a
 #define STR(a) XSTR(a)
 
-extern const unsigned char CONCAT(_binary, TUNE_NAME, bin_start)[];
-extern const unsigned char CONCAT(_binary, TUNE_NAME, bin_end)[];
+#define TUNE_START CONCAT(_binary, TUNE_NAME, bin_start)
+#define TUNE_END CONCAT(_binary, TUNE_NAME, bin_end)
+
+extern const unsigned char TUNE_START[];
+extern const unsigned char TUNE_END[];
 
 
-
-void skweek_main(TEST_PARAMETER_T *ptTestParam)
+void skweek_standalone(void) __attribute__((noreturn));
+void skweek_standalone(void)
 {
+	unsigned long ulTimer;
+	int iElapsed;
+
+
 	systime_init();
-
-	uprintf("\f. *** Skweek by doc_bacardi@users.sourceforge.net ***\n");
-	uprintf("V" VERSION_ALL "\n\n");
-
-	uprintf("Playing " STR(TUNE_NAME) "...\n");
 
 	/* Switch all LEDs off. */
 	rdy_run_setLEDs(RDYRUN_OFF);
 
 	init_mmios();
 
-	/* Play the tune. */
-	skweek_play(_binary_simpsons_theme_bin_start, _binary_simpsons_theme_bin_end);
+	while(1)
+	{
+		/* Play the tune. */
+		skweek_play(TUNE_START, TUNE_END);
 
-	/* Set the result to "OK". */
-	ptTestParam->ulReturnValue = TEST_RESULT_OK;
+		/* Delay for 5 seconds. */
+		ulTimer = systime_get_ms();
+		do
+		{
+			iElapsed = systime_elapsed(ulTimer, 5000);
+		} while( iElapsed==0 );
+	}
 }
 

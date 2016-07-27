@@ -1,4 +1,5 @@
-
+#ifndef __MAIN_TEST_H__
+#define __MAIN_TEST_H__
 
 
 typedef enum
@@ -15,6 +16,7 @@ typedef struct
 } TEST_PARAMETER_T;
 
 
-
 void skweek_main(TEST_PARAMETER_T *ptTestParam);
 
+
+#endif  /* __MAIN_TEST_H__ */

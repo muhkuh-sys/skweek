@@ -126,11 +126,19 @@ Import('platform_lib_netx4000')
 #----------------------------------------------------------------------------
 # This is the list of sources. The elements must be separated with whitespace
 # (i.e. spaces, tabs, newlines). The amount of whitespace does not matter.
-sources = """
+sources_common = """
+	src/skweek.c
+"""
+
+sources_test = """
 	src/header.c
 	src/init_netx_test.S
-	src/main.c
-	src/skweek.c
+	src/main_test.c
+"""
+
+sources_standalone = """
+	src/init_standalone.S
+	src/main_standalone.c
 """
 
 #----------------------------------------------------------------------------
@@ -138,23 +146,37 @@ sources = """
 # Build all files.
 #
 
-# Blinki programm for cortex CPUs
-env_netx4000 = env_netx4000_default.Clone()
-skw_netx4000 = convert_skweek_to_obj(env_netx4000, 'netx4000')
-env_netx4000.Replace(LDFILE = 'src/netx4000/netx4000_cr7.ld')
-env_netx4000.Append(CPPDEFINES = [['TUNE_NAME', 'simpsons_theme']])
-src_netx4000 = env_netx4000.SetBuildPath('targets/netx4000_intram', 'src', sources)
-elf_netx4000 = env_netx4000.Elf('targets/netx4000/netx4000_skweek.elf', src_netx4000 + platform_lib_netx4000 + skw_netx4000['simpsons_theme'])
-txt_netx4000 = env_netx4000.ObjDump('targets/netx4000/netx4000_skweek.txt', elf_netx4000, OBJDUMP_FLAGS=['--disassemble', '--source', '--all-headers', '--wide'])
-bin_netx4000 = env_netx4000.ObjCopy('targets/skweek_netx4000.bin', elf_netx4000)
+# Convert the skweek binaries to objects.
+env_netx4000_tunes = env_netx4000_default.Clone()
+skw_netx4000 = convert_skweek_to_obj(env_netx4000_tunes, 'netx4000')
 
+# Build a netX test version.
+tEnv = env_netx4000_default.Clone()
+tEnv.Replace(LDFILE = 'src/netx4000/netx4000_cr7.ld')
+tEnv.Append(CPPDEFINES = [['TUNE_NAME', 'simpsons_theme'], ['CFG_VERBOSE', 1]])
+tSrc = tEnv.SetBuildPath('targets/netx4000', 'src', sources_common + sources_test)
+tElf = tEnv.Elf('targets/netx4000/netx4000_skweek.elf', tSrc + platform_lib_netx4000 + skw_netx4000['simpsons_theme'])
+tTxt = tEnv.ObjDump('targets/netx4000/netx4000_skweek.txt', tElf, OBJDUMP_FLAGS=['--disassemble', '--source', '--all-headers', '--wide'])
+tBinNetx4000Standalone = tEnv.ObjCopy('targets/skweek_netx4000.bin', tElf)
+
+
+# Build standalone versions for all different tunes.
+for strBase, tSkweekObj in skw_netx4000.iteritems():
+	tEnv = env_netx4000_default.Clone()
+	tEnv.Replace(LDFILE = 'src/netx4000/netx4000_cr7.ld')
+	tEnv.Append(CPPDEFINES = [['TUNE_NAME', strBase], ['CFG_VERBOSE', 0]])
+	strWorkingPath = os.path.join('targets', 'netx4000', 'standalone', strBase)
+	tSrc = tEnv.SetBuildPath(strWorkingPath, 'src', sources_common + sources_standalone)
+	tElf = tEnv.Elf(os.path.join(strWorkingPath, 'netx4000.elf'), tSrc + platform_lib_netx4000 + tSkweekObj)
+	tTxt = tEnv.ObjDump(os.path.join(strWorkingPath, 'netx4000.txt'), tElf, OBJDUMP_FLAGS=['--disassemble', '--source', '--all-headers', '--wide'])
+	tBB0 = tEnv.HBootImage(os.path.join('targets', 'netx4000_skweek_%s.img' % strBase), 'src/netx4000/CR7_to_INTRAM.xml', KNOWN_FILES=dict({'tElfCR7': tElf[0]}))
 
 #----------------------------------------------------------------------------
 #
 # Make a local demo installation.
 #
 # Copy all binary binaries.
-Command('targets/testbench/netx/skweek_netx4000.bin',  bin_netx4000, Copy("$TARGET", "$SOURCE"))
+Command('targets/testbench/netx/skweek_netx4000.bin', tBinNetx4000Standalone, Copy("$TARGET", "$SOURCE"))
 
 # Copy all LUA scripts.
-#Command('targets/testbench/lua/ramtest.lua',  'lua/ramtest.lua', Copy("$TARGET", "$SOURCE"))
+Command('targets/testbench/lua/skweek.lua',  'lua/skweek.lua', Copy("$TARGET", "$SOURCE"))
