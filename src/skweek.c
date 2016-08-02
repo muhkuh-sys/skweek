@@ -20,13 +20,13 @@ static void note(unsigned long ulNoteTicks, unsigned long ulDurationTicks)
 	ptGpioArea->aulGpio_counter_ctrl[1] = 0;
 	ptGpioArea->aulGpio_counter_cnt[1] = 0;
 
-	/* Set GPIO4 to PWM mode. */
-	ulValue  = 7U << HOSTSRT(gpio_cfg4_mode);
-	ulValue |= 1U << HOSTSRT(gpio_cfg4_count_ref);
-	ptGpioArea->aulGpio_cfg[4] = ulValue;
+	/* Set GPIO0 to PWM mode. */
+	ulValue  = 7U << HOSTSRT(gpio_cfg0_mode);
+	ulValue |= 1U << HOSTSRT(gpio_cfg0_count_ref);
+	ptGpioArea->aulGpio_cfg[0] = ulValue;
 
 	/* Set the threshold. */
-	ptGpioArea->aulGpio_tc[4] = ulNoteTicks / 2U;
+	ptGpioArea->aulGpio_tc[0] = ulNoteTicks / 2U;
 
 	/* Setup timer 0 with the duration of the note. */
 	ptGpioArea->aulGpio_counter_max[0] = ulDurationTicks;
@@ -37,7 +37,7 @@ static void note(unsigned long ulNoteTicks, unsigned long ulDurationTicks)
 	/* Setup timer 1 with the frequency. */
 	ptGpioArea->aulGpio_counter_max[1] = ulNoteTicks;
 	ulValue  = HOSTMSK(gpio_counter1_ctrl_run);
-	ulValue |= 4U << HOSTSRT(gpio_counter1_ctrl_gpio_ref);
+	ulValue |= 0U << HOSTSRT(gpio_counter1_ctrl_gpio_ref);
 	ptGpioArea->aulGpio_counter_ctrl[1] = ulValue;
 
 	/* Wait until timer 0 stopped. */
@@ -49,7 +49,7 @@ static void note(unsigned long ulNoteTicks, unsigned long ulDurationTicks)
 
 	/* Stop playing the note. */
 	ptGpioArea->aulGpio_counter_ctrl[1] = 0;
-	ptGpioArea->aulGpio_cfg[4] = 0U;
+	ptGpioArea->aulGpio_cfg[0] = 0U;
 }
 
 
