@@ -6,29 +6,11 @@
 
 	.global start
 
-
-   @ optional can be used by python script to define individual entry points for cortex CA9 core0/1
-#if ASIC_TYP==4000
-   @ define entry point for CA9_core0
-	.global start_core0
-   @ define entry point for CA9_core1
-	.global start_core1
-#endif
-
 @--------------------------------------
 
-  .func start
-
-   @ optional can be used by python script to define individual entry points for cortex CA9 core0/1
-#if ASIC_TYP==4000
-   @ define entry point for CA9_core0
-start_core0:
-   @ define entry point for CA9_core1
-start_core1:
-#endif
-
+    .func start
+    .type start, STT_FUNC
 start:
-
 	stmfd   sp!, {r0, r1, r2, r3, lr}
 
 	@ Clear the .bss section (zero init).
@@ -44,8 +26,6 @@ clear_bss:
 
 	ldmfd   sp!, {r0, r1, r2, r3, lr}
 	bx      lr
-
-
   .endfunc
 
 @--------------------------------------
