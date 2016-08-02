@@ -6,12 +6,13 @@
 
 	.global start
 
-
 @--------------------------------------
 
-  .func start
-
+    .func start
+    .type start, STT_FUNC
 start:
+	stmfd   sp!, {r0, r1, r2, r3, lr}
+
 	@ Clear the .bss section (zero init).
 	mov     r1, #0
 	ldr     r2, =__bss_start__
@@ -22,6 +23,9 @@ clear_bss:
 	blo     clear_bss
 
 	bl      skweek_standalone
+
+	ldmfd   sp!, {r0, r1, r2, r3, lr}
+	bx      lr
   .endfunc
 
 @--------------------------------------
