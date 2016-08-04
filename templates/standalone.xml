@@ -2,5 +2,10 @@
 <HBootImage type="REGULAR">
 	<Chunks>
 		<Snip group="${GROUP}" artifact="${ARTIFACT}" version="${VERSION}"/>
+
+		<!-- Stop after the tune has finished. -->
+		<Execute>
+			<Address>WFE_Loop</Address>
+		</Execute>
 	</Chunks>
 </HBootImage>
