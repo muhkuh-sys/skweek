@@ -28,6 +28,7 @@ SConscript('mbs/SConscript')
 Import('env_default')
 
 import os.path
+import string
 
 import skweek
 skweek.ApplyToEnv(env_default)
@@ -160,7 +161,8 @@ tTxt = tEnv.ObjDump('targets/netx4000/netx4000_skweek.txt', tElf, OBJDUMP_FLAGS=
 tBinNetx4000Standalone = tEnv.ObjCopy('targets/skweek_netx4000.bin', tElf)
 
 
-# Build standalone versions for all different tunes.
+# Build snippets for all different tunes.
+global PROJECT_VERSION
 for strBase, tSkweekObj in skw_netx4000.iteritems():
 	tEnv = env_netx4000_default.Clone()
 	tEnv.Replace(LDFILE = 'src/netx4000/netx4000_cr7.ld')
@@ -169,7 +171,27 @@ for strBase, tSkweekObj in skw_netx4000.iteritems():
 	tSrc = tEnv.SetBuildPath(strWorkingPath, 'src', sources_common + sources_standalone)
 	tElf = tEnv.Elf(os.path.join(strWorkingPath, 'netx4000.elf'), tSrc + platform_lib_netx4000 + tSkweekObj)
 	tTxt = tEnv.ObjDump(os.path.join(strWorkingPath, 'netx4000.txt'), tElf, OBJDUMP_FLAGS=['--disassemble', '--source', '--all-headers', '--wide'])
-	tBB0 = tEnv.HBootImage(os.path.join('targets', 'netx4000_skweek_%s.img' % strBase), 'src/netx4000/CR7_to_INTRAM.xml', KNOWN_FILES=dict({'tElfCR7': tElf[0]}))
+	tBin = tEnv.ObjCopy(os.path.join(strWorkingPath, 'netx4000.bin'), tElf)
+	tTmp = tEnv.GccSymbolTemplate(os.path.join(strWorkingPath, 'snippet.xml'), tElf, GCCSYMBOLTEMPLATE_TEMPLATE='templates/hboot_snippet.xml', GCCSYMBOLTEMPLATE_BINFILE=tBin[0])
+
+	# Create the snippet from the parameters.
+	aArtifactGroupReverse = ['org', 'muhkuh', 'hboot', 'sniplib']
+	atSnippet = {
+		'group': '.'.join(aArtifactGroupReverse),
+		'artifact': 'skweek_%s' % strBase,
+		'version': PROJECT_VERSION,
+		'vcs-id': tEnv.Version_GetVcsId(),
+		'license': 'GPL-2.0',
+		'author_name': 'Muhkuh team',
+		'author_url': 'https://github.com/muhkuh-sys',
+		'description': 'Play the tune "%s" on a speaker connected to a GPIO pin.' % string.replace(strBase, '_', ' '),
+		'categories': ['netx4000', 'music', 'speaker', 'skweek_%s' % strBase]
+	}
+	strArtifactPath = 'targets/snippets/%s/%s/%s' % ('/'.join(aArtifactGroupReverse), atSnippet['artifact'], PROJECT_VERSION)
+	tSnippet = tEnv.HBootSnippet('%s/%s-%s.xml' % (strArtifactPath, atSnippet['artifact'], PROJECT_VERSION), tTmp, PARAMETER=atSnippet)
+
+	# Create the POM file.
+	tPOM = tEnv.POMTemplate('%s/%s-%s.pom' % (strArtifactPath, atSnippet['artifact'], PROJECT_VERSION), 'templates/pom.xml', POM_TEMPLATE_GROUP=atSnippet['group'], POM_TEMPLATE_ARTIFACT=atSnippet['artifact'], POM_TEMPLATE_VERSION=atSnippet['version'], POM_TEMPLATE_PACKAGING='xml')
 
 #----------------------------------------------------------------------------
 #

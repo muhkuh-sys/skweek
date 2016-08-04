@@ -1,0 +1,39 @@
+<Options>
+	<!-- Set the MMIO function. -->
+	<Option id="RAW" offset="0x12bc+4">
+		<U08>
+			MMIO_CFG_GPIO0
+		</U08>
+	</Option>
+	<Option id="RAW" offset="0x1327+4">
+		<U08>
+			0x00
+		</U08>
+	</Option>
+
+	<!-- Set the portcontrol value. -->
+	<Option id="RAW" offset="0x139c+0x34*2">
+		<U16>
+			DFLT_VAL_NX4000_PORTCONTROL_P3_4,
+		</U16>
+	</Option>
+</Options>
+
+<!-- Apply the MMIO values. -->
+<Snip group="org.muhkuh.hboot.sniplib" artifact="apply_mmio" version="1.0.0"/>
+
+<!-- Apply the portcontrol values. -->
+<Snip group="org.muhkuh.hboot.sniplib" artifact="apply_portcontrol" version="1.0.0"/>
+<Execute>
+	<Address>0x041165f5</Address>
+</Execute>
+
+<!-- Play the tune. -->
+<Data>
+	<Hex address="${%LOAD_ADDRESS%}">
+${%PROGRAM_DATA%}
+	</Hex>
+</Data>
+<Execute>
+	<Address>${%EXECUTION_ADDRESS%}</Address>
+</Execute>
