@@ -194,9 +194,9 @@ for strBase, tSkweekObj in skw_netx4000.iteritems():
 	tPOM = tEnv.POMTemplate('%s/%s-%s.pom' % (strArtifactPath, atSnippet['artifact'], PROJECT_VERSION), 'templates/pom.xml', POM_TEMPLATE_GROUP=atSnippet['group'], POM_TEMPLATE_ARTIFACT=atSnippet['artifact'], POM_TEMPLATE_VERSION=atSnippet['version'], POM_TEMPLATE_PACKAGING='xml')
 
 	# Build the HBOOT definition for this image.
-	tHBootDef = tEnv.POMTemplate(os.path.join(strWorkingPath, 'standalone.xml'), 'templates/standalone.xml', POM_TEMPLATE_GROUP=atSnippet['group'], POM_TEMPLATE_ARTIFACT=atSnippet['artifact'], POM_TEMPLATE_VERSION=atSnippet['version'])
-	tImg = tEnv.HBootImage(os.path.join(strWorkingPath, '%s-%s.img' % (atSnippet['artifact'], PROJECT_VERSION)), tHBootDef)
-	tEnv.Depends(tImg, tSnippet)
+	tDef_nxhx4000 = tEnv.POMTemplate(os.path.join(strWorkingPath, 'standalone_nxhx4000.xml'), 'templates/standalone_nxhx4000.xml', POM_TEMPLATE_GROUP=atSnippet['group'], POM_TEMPLATE_ARTIFACT=atSnippet['artifact'], POM_TEMPLATE_VERSION=atSnippet['version'])
+	tImg_nxhx4000 = tEnv.HBootImage(os.path.join(strWorkingPath, '%s-%s_nxhx4000.img' % (atSnippet['artifact'], PROJECT_VERSION)), tDef_nxhx4000)
+	tEnv.Depends(tImg_nxhx4000, tSnippet)
 
 #----------------------------------------------------------------------------
 #
