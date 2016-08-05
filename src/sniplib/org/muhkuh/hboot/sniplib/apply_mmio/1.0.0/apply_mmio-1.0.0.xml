@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HBootSnippet>
+	<Info artifact="apply_mmio" group="org.muhkuh.hboot.sniplib" vcs-id="GIT1.0.0" version="1.0.0">
+		<License name="GPL-2.0"/>
+		<Author name="Muhkuh team" url="https://github.com/muhkuh-sys"/>
+		<Description>Apply the current MMIO configuration.</Description>
+		<Category>netx4000</Category>
+		<Category>hardware configuration</Category>
+		<Category>mmio</Category>
+	</Info>
+	<Snippet>&lt;Data&gt;
+	&lt;Hex address=&quot;0x04000000&quot;&gt;
+f0b4aff3538744f6be3044f65333c0f202004ff480744ff480660746c0f20203
+cff20844cff20846a3f5123210f8015f13f8011fa2f2533241ea4521bb42e56f
+e56746f82210efd1aff35385f0bc7047
+	&lt;/Hex&gt;
+&lt;/Data&gt;
+&lt;Execute&gt;
+	&lt;Address&gt;0x04000001&lt;/Address&gt;
+&lt;/Execute&gt;
+</Snippet>
+</HBootSnippet>
