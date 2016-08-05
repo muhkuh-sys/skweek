@@ -167,7 +167,7 @@ for strBase, tSkweekObj in skw_netx4000.iteritems():
 	tEnv = env_netx4000_default.Clone()
 	tEnv.Replace(LDFILE = 'src/netx4000/netx4000_cr7.ld')
 	tEnv.Append(CPPDEFINES = [['TUNE_NAME', strBase], ['CFG_VERBOSE', 0]])
-	strWorkingPath = os.path.join('targets', 'netx4000', 'standalone', strBase)
+	strWorkingPath = os.path.join('targets', 'standalone', 'netx4000', strBase)
 	tSrc = tEnv.SetBuildPath(strWorkingPath, 'src', sources_common + sources_standalone)
 	tElf = tEnv.Elf(os.path.join(strWorkingPath, 'netx4000.elf'), tSrc + platform_lib_netx4000 + tSkweekObj)
 	tTxt = tEnv.ObjDump(os.path.join(strWorkingPath, 'netx4000.txt'), tElf, OBJDUMP_FLAGS=['--disassemble', '--source', '--all-headers', '--wide'])
