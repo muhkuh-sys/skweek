@@ -1,20 +1,20 @@
 <Options>
 	<!-- Set the MMIO function. -->
-	<Option id="RAW" offset="0x12bc+4">
+	<Option id="RAW" offset="0x12bc+%%MMIO_INDEX%%">
 		<U08>
 			MMIO_CFG_GPIO0
 		</U08>
 	</Option>
-	<Option id="RAW" offset="0x1327+4">
+	<Option id="RAW" offset="0x1327+%%MMIO_INDEX%%">
 		<U08>
 			0x00
 		</U08>
 	</Option>
 
 	<!-- Set the portcontrol value. -->
-	<Option id="RAW" offset="0x139c+0x34*2">
+	<Option id="RAW" offset="0x139c+%%PORTCONTROL_INDEX%%*2">
 		<U16>
-			DFLT_VAL_NX4000_PORTCONTROL_P3_4
+			%%PORTCONTROL_VALUE%%
 		</U16>
 	</Option>
 </Options>

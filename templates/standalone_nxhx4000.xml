@@ -1,7 +1,11 @@
 <?xml version="1.0"?>
 <HBootImage type="REGULAR">
 	<Chunks>
-		<Snip group="${GROUP}" artifact="${ARTIFACT}" version="${VERSION}"/>
+		<Snip group="${GROUP}" artifact="${ARTIFACT}" version="${VERSION}">
+			<Parameter name="MMIO_INDEX">4</Parameter>
+			<Parameter name="PORTCONTROL_INDEX">0x34</Parameter>
+			<Parameter name="PORTCONTROL_VALUE">DFLT_VAL_NX4000_PORTCONTROL_P3_4</Parameter>
+		</Snip>
 
 		<!-- Stop after the tune has finished. -->
 		<Execute>

@@ -185,7 +185,24 @@ for strBase, tSkweekObj in skw_netx4000.iteritems():
 		'author_name': 'Muhkuh team',
 		'author_url': 'https://github.com/muhkuh-sys',
 		'description': 'Play the tune "%s" on a speaker connected to a GPIO pin.' % string.replace(strBase, '_', ' '),
-		'categories': ['netx4000', 'music', 'speaker', 'skweek_%s' % strBase]
+		'categories': ['netx4000', 'music', 'speaker', 'skweek_%s' % strBase],
+		'parameter': {
+			'MMIO_INDEX':
+			{
+				'help': 'Index of the MMIO pin connected to the speaker.',
+				'default': None
+			},
+			'PORTCONTROL_INDEX':
+			{
+				'help': 'Index of the portcontrol pin connected to the speaker.',
+				'default': None
+			},
+			'PORTCONTROL_VALUE':
+			{
+				'help': 'Value for the portcontrol register.',
+				'default': None
+			}
+		}
 	}
 	strArtifactPath = 'targets/snippets/%s/%s/%s' % ('/'.join(aArtifactGroupReverse), atSnippet['artifact'], PROJECT_VERSION)
 	tSnippet = tEnv.HBootSnippet('%s/%s-%s.xml' % (strArtifactPath, atSnippet['artifact'], PROJECT_VERSION), tTmp, PARAMETER=atSnippet)
