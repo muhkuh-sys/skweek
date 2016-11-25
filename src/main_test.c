@@ -20,11 +20,11 @@ static void init_mmios(void)
 
 
 	/* Set MMIO4 to PIO. */
-	ptAsicCtrlArea->ulAsic_ctrl_access_key = ptAsicCtrlArea->ulAsic_ctrl_access_key;
+	ptAsicCtrlArea->ulAsic_ctrl_access_key = ptAsicCtrlArea->ulAsic_ctrl_access_key; /* @suppress("Assignment to itself") */
 	ptMmioCtrlArea->aulMmio_cfg[4] = MMIO_CFG_PIO;
 
 	/* Set MMIO5 to GPIO4. */
-	ptAsicCtrlArea->ulAsic_ctrl_access_key = ptAsicCtrlArea->ulAsic_ctrl_access_key;
+	ptAsicCtrlArea->ulAsic_ctrl_access_key = ptAsicCtrlArea->ulAsic_ctrl_access_key; /* @suppress("Assignment to itself") */
 	ptMmioCtrlArea->aulMmio_cfg[5] = MMIO_CFG_GPIO4;
 }
 
