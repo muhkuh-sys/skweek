@@ -20,23 +20,29 @@
 #-------------------------------------------------------------------------#
 
 
+import os.path
+import string
+
 #----------------------------------------------------------------------------
 #
 # Set up the Muhkuh Build System.
 #
 SConscript('mbs/SConscript')
-Import('env_default')
-
-import os.path
-import string
+Import('atEnv')
 
 import skweek
-skweek.ApplyToEnv(env_default)
+skweek.ApplyToEnv(atEnv.DEFAULT)
 
+# Create a build environment for the Cortex-R7 and Cortex-A9 based netX chips.
+env_cortexR7 = atEnv.DEFAULT.CreateEnvironment(['gcc-arm-none-eabi-4.9', 'asciidoc'])
+env_cortexR7.CreateCompilerEnv('NETX4000_RELAXED', ['arch=armv7', 'thumb'], ['arch=armv7-r', 'thumb'])
 
-# Create a build environment for the Cortex-R based netX chips.
-env_cortex7 = env_default.CreateEnvironment(['gcc-arm-none-eabi-4.9', 'asciidoc'])
+# Create a build environment for the Cortex-M4 based netX chips.
+env_cortexM4 = atEnv.DEFAULT.CreateEnvironment(['gcc-arm-none-eabi-4.9', 'asciidoc'])
+env_cortexM4.CreateCompilerEnv('NETX90_MPW', ['arch=armv7', 'thumb'], ['arch=armv7e-m', 'thumb'])
 
+# Build the platform libraries.
+SConscript('platform/SConscript')
 
 #----------------------------------------------------------------------------
 #
@@ -76,7 +82,7 @@ for strSmackyPath in astrSmackyTunes:
 	strSkweek = os.path.join('targets', 'tunes', strBase + '.bin')
 
 	# Convert the smacky file to skweek.
-	tSkweek = env_default.Skweek(strSkweek, strSmackyPath)
+	tSkweek = atEnv.DEFAULT.Skweek(strSkweek, strSmackyPath)
 
 	# Add the file to the list of tunes.
 	atSkweek[strBase] = tSkweek
@@ -96,37 +102,15 @@ def convert_skweek_to_obj(tEnv, strId):
 
 #----------------------------------------------------------------------------
 #
-# Create the compiler environments.
-#
-astrIncludePaths = ['src', '#platform/src', '#platform/src/lib', '#targets/version']
-
-
-env_netx4000_default = env_cortex7.CreateCompilerEnv('4000', ['arch=armv7', 'thumb'], ['arch=armv7-r', 'thumb'])
-env_netx4000_default.Append(CPPPATH = astrIncludePaths)
-env_netx4000_default.Replace(BOOTBLOCK_CHIPTYPE = 4000)
-
-Export('env_netx4000_default')
-
-
-#----------------------------------------------------------------------------
-#
 # Get the source code version from the VCS.
 #
-env_default.Version('#targets/version/version.h', 'templates/version.h')
+atEnv.DEFAULT.Version('#targets/version/version.h', 'templates/version.h')
 
 
 #----------------------------------------------------------------------------
 #
-# Build the platform libraries.
+# Build all files.
 #
-PLATFORM_LIB_CFG_BUILDS = [4000]
-SConscript('platform/SConscript', exports='PLATFORM_LIB_CFG_BUILDS')
-Import('platform_lib_netx4000')
-
-
-#----------------------------------------------------------------------------
-# This is the list of sources. The elements must be separated with whitespace
-# (i.e. spaces, tabs, newlines). The amount of whitespace does not matter.
 sources_common = """
 	src/skweek.c
 """
@@ -142,34 +126,46 @@ sources_standalone = """
 	src/main_standalone.c
 """
 
-#----------------------------------------------------------------------------
-#
-# Build all files.
-#
+astrIncludePaths = ['src', '#platform/src', '#platform/src/lib', '#targets/version']
+
 
 # Convert the skweek binaries to objects.
-env_netx4000_tunes = env_netx4000_default.Clone()
-skw_netx4000 = convert_skweek_to_obj(env_netx4000_tunes, 'netx4000')
+env_netx4000_tunes = atEnv.NETX4000_RELAXED.Clone()
+skw_netx4000 = convert_skweek_to_obj(env_netx4000_tunes, 'netx4000_relaxed')
+
+env_netx90_tunes = atEnv.NETX90_MPW.Clone()
+skw_netx90 = convert_skweek_to_obj(env_netx90_tunes, 'netx90_mpw')
 
 # Build a netX test version.
-tEnv = env_netx4000_default.Clone()
+tEnv = atEnv.NETX4000_RELAXED.Clone()
 tEnv.Replace(LDFILE = 'src/netx4000/netx4000_cr7.ld')
+tEnv.Append(CPPPATH = astrIncludePaths)
 tEnv.Append(CPPDEFINES = [['TUNE_NAME', 'simpsons_theme'], ['CFG_VERBOSE', 1]])
-tSrc = tEnv.SetBuildPath('targets/netx4000', 'src', sources_common + sources_test)
-tElf = tEnv.Elf('targets/netx4000/netx4000_skweek.elf', tSrc + platform_lib_netx4000)
-tTxt = tEnv.ObjDump('targets/netx4000/netx4000_skweek.txt', tElf, OBJDUMP_FLAGS=['--disassemble', '--source', '--all-headers', '--wide'])
+tSrc = tEnv.SetBuildPath('targets/netx4000_relaxed', 'src', sources_common + sources_test)
+tElf = tEnv.Elf('targets/netx4000_relaxed/netx4000_skweek.elf', tSrc + tEnv['PLATFORM_LIBRARY'])
+tTxt = tEnv.ObjDump('targets/netx4000_relaxed/netx4000_skweek.txt', tElf, OBJDUMP_FLAGS=['--disassemble', '--source', '--all-headers', '--wide'])
 tBinNetx4000Testbench = tEnv.ObjCopy('targets/skweek_netx4000.bin', tElf)
+
+tEnv = atEnv.NETX90_MPW.Clone()
+tEnv.Replace(LDFILE = 'src/netx90/netx90.ld')
+tEnv.Append(CPPPATH = astrIncludePaths)
+tEnv.Append(CPPDEFINES = [['TUNE_NAME', 'simpsons_theme'], ['CFG_VERBOSE', 1]])
+tSrc = tEnv.SetBuildPath('targets/netx90_mpw', 'src', sources_common + sources_test)
+tElf = tEnv.Elf('targets/netx90_mpw/netx90_skweek.elf', tSrc + tEnv['PLATFORM_LIBRARY'])
+tTxt = tEnv.ObjDump('targets/netx90_mpw/netx90_skweek.txt', tElf, OBJDUMP_FLAGS=['--disassemble', '--source', '--all-headers', '--wide'])
+tBinNetx90Testbench = tEnv.ObjCopy('targets/skweek_netx90.bin', tElf)
 
 
 # Build snippets for all different tunes.
 global PROJECT_VERSION
 for strBase, tSkweekObj in skw_netx4000.iteritems():
-	tEnv = env_netx4000_default.Clone()
+	tEnv = atEnv.NETX4000_RELAXED.Clone()
 	tEnv.Replace(LDFILE = 'src/netx4000/netx4000_cr7.ld')
+	tEnv.Append(CPPPATH = astrIncludePaths)
 	tEnv.Append(CPPDEFINES = [['TUNE_NAME', strBase], ['CFG_VERBOSE', 0]])
-	strWorkingPath = os.path.join('targets', 'standalone', 'netx4000', strBase)
+	strWorkingPath = os.path.join('targets', 'standalone', 'netx4000_relaxed', strBase)
 	tSrc = tEnv.SetBuildPath(strWorkingPath, 'src', sources_common + sources_standalone)
-	tElf = tEnv.Elf(os.path.join(strWorkingPath, 'netx4000.elf'), tSrc + platform_lib_netx4000 + tSkweekObj)
+	tElf = tEnv.Elf(os.path.join(strWorkingPath, 'netx4000.elf'), tSrc + tEnv['PLATFORM_LIBRARY'] + tSkweekObj)
 	tTxt = tEnv.ObjDump(os.path.join(strWorkingPath, 'netx4000.txt'), tElf, OBJDUMP_FLAGS=['--disassemble', '--source', '--all-headers', '--wide'])
 	tBin = tEnv.ObjCopy(os.path.join(strWorkingPath, 'netx4000.bin'), tElf)
 	tTmp = tEnv.GccSymbolTemplate(os.path.join(strWorkingPath, 'snippet.xml'), tElf, GCCSYMBOLTEMPLATE_TEMPLATE='templates/hboot_snippet.xml', GCCSYMBOLTEMPLATE_BINFILE=tBin[0])
@@ -180,7 +176,8 @@ for strBase, tSkweekObj in skw_netx4000.iteritems():
 		'group': '.'.join(aArtifactGroupReverse),
 		'artifact': 'skweek_%s' % strBase,
 		'version': PROJECT_VERSION,
-		'vcs-id': tEnv.Version_GetVcsId(),
+		'vcs_id': tEnv.Version_GetVcsId(),
+		'vcs_url': 'https://github.com/muhkuh-sys/skweek',
 		'license': 'GPL-2.0',
 		'author_name': 'Muhkuh team',
 		'author_url': 'https://github.com/muhkuh-sys',
@@ -221,6 +218,7 @@ for strBase, tSkweekObj in skw_netx4000.iteritems():
 #
 # Copy all binary binaries.
 Command('targets/testbench/netx/skweek_netx4000.bin', tBinNetx4000Testbench, Copy("$TARGET", "$SOURCE"))
+Command('targets/testbench/netx/skweek_netx90.bin',   tBinNetx90Testbench,   Copy("$TARGET", "$SOURCE"))
 
 # Copy all tunes.
 for strBase, tSkweek in atSkweek.iteritems():

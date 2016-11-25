@@ -7,7 +7,7 @@
 
 /*-------------------------------------------------------------------------*/
 
-
+#if ASIC_TYP==ASIC_TYP_NETX4000_RELAXED
 static void note(unsigned long ulNoteTicks, unsigned long ulDurationTicks)
 {
 	HOSTDEF(ptGpioArea);
@@ -77,7 +77,70 @@ static void pause(unsigned long ulDurationTicks)
 		ulValue &= HOSTMSK(gpio_counter0_ctrl_run);
 	} while( ulValue!=0 );
 }
+#elif ASIC_TYP==ASIC_TYP_NETX90_MPW
+static void note(unsigned long ulNoteTicks, unsigned long ulDurationTicks)
+{
+	HOSTDEF(ptArmTimerComArea);
+	HOSTDEF(ptGpioArea);
+	unsigned long ulValue;
 
+
+	/* Stop the GPIO timer. */
+	ptGpioArea->ulGpio_counter0_ctrl = 0;
+	ptGpioArea->ulGpio_counter0_cnt = 0;
+
+	/* Set GPIO0 to PWM mode. */
+	ulValue  = 7U << HOSTSRT(gpio_cfg0_mode);
+	ulValue |= 1U << HOSTSRT(gpio_cfg0_count_ref);
+	ptGpioArea->aulGpio_cfg[0] = ulValue;
+
+	/* Set the threshold. */
+	ptGpioArea->aulGpio_tc[0] = ulNoteTicks / 2U;
+
+	/* Setup the ARM timer with the duration of the note. */
+	ptArmTimerComArea->aulTimer_config_timer[0] = 1;
+	ptArmTimerComArea->aulTimer_preload_timer[0] = ulDurationTicks;
+	ptArmTimerComArea->aulTimer_config_timer[0] = 0;
+
+	/* Setup the GPIO timer with the frequency. */
+	ptGpioArea->ulGpio_counter0_max = ulNoteTicks;
+	ulValue  = HOSTMSK(gpio_counter0_ctrl_run);
+	ulValue |= 0U << HOSTSRT(gpio_counter0_ctrl_gpio_ref);
+	ptGpioArea->ulGpio_counter0_ctrl = ulValue;
+
+	/* Wait until the ARM timer stopped. */
+	do
+	{
+		ulValue = ptArmTimerComArea->aulTimer_timer[0];
+	} while( ulValue!=0 );
+
+	/* Stop playing the note. */
+	ptGpioArea->ulGpio_counter0_ctrl = 0;
+	ptGpioArea->aulGpio_cfg[0] = 0U;
+}
+
+
+
+static void pause(unsigned long ulDurationTicks)
+{
+	HOSTDEF(ptArmTimerComArea);
+	unsigned long ulValue;
+
+
+	/* Stop the timer. */
+	ptArmTimerComArea->aulTimer_config_timer[0] = 1;
+	ptArmTimerComArea->aulTimer_preload_timer[0] = ulDurationTicks;
+
+	/* Start timer 0. */
+	ptArmTimerComArea->aulTimer_config_timer[0] = 0;
+
+	/* Wait until timer 0 stopped. */
+	do
+	{
+		ulValue = ptArmTimerComArea->aulTimer_timer[0];
+	} while( ulValue!=0 );
+}
+#endif
 
 
 static unsigned long get_u32(const unsigned char *pucCnt)

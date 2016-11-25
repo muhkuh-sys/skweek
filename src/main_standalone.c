@@ -9,9 +9,6 @@
 /*-------------------------------------------------------------------------*/
 
 
-#define XSTR(a) #a
-#define STR(a) XSTR(a)
-
 #define TUNE_START CONCAT(_binary, TUNE_NAME, bin_start)
 #define TUNE_END CONCAT(_binary, TUNE_NAME, bin_end)
 
