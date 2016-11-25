@@ -156,9 +156,9 @@ tEnv = env_netx4000_default.Clone()
 tEnv.Replace(LDFILE = 'src/netx4000/netx4000_cr7.ld')
 tEnv.Append(CPPDEFINES = [['TUNE_NAME', 'simpsons_theme'], ['CFG_VERBOSE', 1]])
 tSrc = tEnv.SetBuildPath('targets/netx4000', 'src', sources_common + sources_test)
-tElf = tEnv.Elf('targets/netx4000/netx4000_skweek.elf', tSrc + platform_lib_netx4000 + skw_netx4000['simpsons_theme'])
+tElf = tEnv.Elf('targets/netx4000/netx4000_skweek.elf', tSrc + platform_lib_netx4000)
 tTxt = tEnv.ObjDump('targets/netx4000/netx4000_skweek.txt', tElf, OBJDUMP_FLAGS=['--disassemble', '--source', '--all-headers', '--wide'])
-tBinNetx4000Standalone = tEnv.ObjCopy('targets/skweek_netx4000.bin', tElf)
+tBinNetx4000Testbench = tEnv.ObjCopy('targets/skweek_netx4000.bin', tElf)
 
 
 # Build snippets for all different tunes.
@@ -220,7 +220,11 @@ for strBase, tSkweekObj in skw_netx4000.iteritems():
 # Make a local demo installation.
 #
 # Copy all binary binaries.
-Command('targets/testbench/netx/skweek_netx4000.bin', tBinNetx4000Standalone, Copy("$TARGET", "$SOURCE"))
+Command('targets/testbench/netx/skweek_netx4000.bin', tBinNetx4000Testbench, Copy("$TARGET", "$SOURCE"))
+
+# Copy all tunes.
+for strBase, tSkweek in atSkweek.iteritems():
+	Command('targets/testbench/tunes/%s.bin' % strBase, tSkweek, Copy("$TARGET", "$SOURCE"))
 
 # Copy all LUA scripts.
-Command('targets/testbench/lua/skweek.lua',  'lua/skweek.lua', Copy("$TARGET", "$SOURCE"))
+Command('targets/testbench/skweek.lua',  'lua/skweek.lua', Copy("$TARGET", "$SOURCE"))

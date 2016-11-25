@@ -29,32 +29,59 @@ static void init_mmios(void)
 }
 
 
-#define XSTR(a) #a
-#define STR(a) XSTR(a)
-
-extern const unsigned char CONCAT(_binary, TUNE_NAME, bin_start)[];
-extern const unsigned char CONCAT(_binary, TUNE_NAME, bin_end)[];
-
-
 
 void skweek_main(TEST_PARAMETER_T *ptTestParam)
 {
+	const SKWEEK_PARAMETER_T *ptParameter;
+	const unsigned char *pucTuneStart;
+	const unsigned char *pucTuneEnd;
+	TEST_RESULT_T tResult;
+	int iResult;
+
+
+	/* Be optimistic. */
+	tResult = TEST_RESULT_OK;
+
 	systime_init();
 
 	uprintf("\f. *** Skweek by doc_bacardi@users.sourceforge.net ***\n");
 	uprintf("V" VERSION_ALL "\n\n");
 
-	uprintf("Playing " STR(TUNE_NAME) "...\n");
+	ptParameter = (const SKWEEK_PARAMETER_T*)(ptTestParam->pvInitParams);
+	if( ptParameter==NULL )
+	{
+		uprintf("No tune to play, the init parameter is NULL!\n");
+		tResult = TEST_RESULT_ERROR;
+	}
+	else
+	{
+		uprintf("Tune start: 0x%08x\n", (unsigned long)(ptParameter->pucTuneStart));
+		uprintf("Tune size:  %d\n", ptParameter->ulTuneSizeInBytes);
 
-	/* Switch all LEDs off. */
-	rdy_run_setLEDs(RDYRUN_OFF);
+		hexdump(ptParameter->pucTuneStart, ptParameter->ulTuneSizeInBytes);
 
-	init_mmios();
+		pucTuneStart = ptParameter->pucTuneStart;
+		pucTuneEnd   = ptParameter->pucTuneStart + ptParameter->ulTuneSizeInBytes;
 
-	/* Play the tune. */
-	skweek_play(_binary_simpsons_theme_bin_start, _binary_simpsons_theme_bin_end);
+		/* Switch all LEDs off. */
+		rdy_run_setLEDs(RDYRUN_OFF);
+
+		init_mmios();
+
+		/* Play the tune. */
+		iResult = skweek_play(pucTuneStart, pucTuneEnd);
+		if( iResult!=0 )
+		{
+			uprintf("Failed to play the tune!\n");
+			tResult = TEST_RESULT_ERROR;
+		}
+		else
+		{
+			uprintf("Finished the tune.\n");
+		}
+	}
 
 	/* Set the result to "OK". */
-	ptTestParam->ulReturnValue = TEST_RESULT_OK;
+	ptTestParam->ulReturnValue = tResult;
 }
 
